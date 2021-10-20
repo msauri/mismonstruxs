@@ -1,14 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis niñxs monstruxs</title>
-</head>
-<body>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Mis niñxs montruxs</title>
+  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 
-    <h1> Página en construcción</h1>
-    
+<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
+<script>
+  function iniciar(){
+    document.getElementById('habilitar').className = 'arjs-loader';
+    document.getElementById('botonIniciar').hidden = true;
+    document.getElementById('cargando').hidden = false;
+  }
+    window.onload = function() {
+        AFRAME.registerComponent('videohandler', {
+            init: function () {
+                var marker = this.el;
+                var markerId = marker.id;
+
+                switch (marker.id){
+                  case 'uniformes':
+                    this.vid = document.querySelector("#vid");
+                  break;
+
+                  case 'nica':
+                    this.vid = document.querySelector("#nica");
+                  break;
+
+                  case 'mana':
+                    this.vid = document.querySelector("#mana");
+                    break;
+                  
+
+                }
+              
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                    this.vid.muted = false
+                }.bind(this));
+
+		marker.addEventListener('markerLost', function() {
+			this.vid.pause();
+			this.vid.currentTime = 0;
+		}.bind(this));
+            }
+        });
+    };
+</script>
+
+<style>
+    .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+    }
+    .habilitar{
+      height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+    }
+</style>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+  
+    <div id= 'habilitar' class="habilitar">
+        <button id= 'botonIniciar'onclick="iniciar()"> Iniciar</button>
+        <div id='cargando' hidden>Cargando</div>
+    </div>
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer='antialias: true; alpha: true; precision: mediump;'
+        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+
+        <a-assets>
+            <video src="assets/hermanos-uniformes-20.11.mp4"
+                preload="auto" id="vid" response-type="arraybuffer" loop
+                crossorigin webkit-playsinline autoplay muted playsinline>
+            </video>
+
+            <video src="assets/niño-nica-20.11.mp4"
+            preload="auto" id="nica" response-type="arraybuffer" loop
+            crossorigin webkit-playsinline autoplay muted playsinline>
+
+            <video src="assets/pitta-covid.mp4"
+            preload="auto" id="mana" response-type="arraybuffer" loop
+            crossorigin webkit-playsinline autoplay muted playsinline>
+        </video>
+        </video>
+        </a-assets>
+
+        <a-nft
+            videohandler id= 'uniforme'
+            type='nft' url='.mismonstruxs/Trackers/hermanosUniformesmol'
+            smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
+        >
+           <a-video
+                src="#vid"
+                position = '120 0 -150'
+                rotation='90 180 0'
+                width='190'
+                height='285'
+                muted= 'false'
+                loop= 'true'
+                >
+            </a-video>
+            </script>            
+        </a-nft>
+
+        <a-nft
+        videohandler id='nica'
+        type='nft' url='.mismonstruxs/Trackers/niño-nicasmol'
+        smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
+    >
+       <a-video
+            src="#nica"
+            position = '120 0 -150'
+            rotation='90 180 0'
+            width='190'
+            height='285'
+            muted= 'false'
+            loop= 'true'
+            >
+        </a-video>
+        </script>            
+    </a-nft>
+
+    <a-nft
+    videohandler id='mana'
+    type='nft' url='.mismonstruxs/Trackers/nica_16smol'
+    smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
+>
+   <a-video
+        src="#mana"
+        position = '120 0 -150'
+        rotation='90 180 0'
+        width='190'
+        height='285'
+        muted= 'false'
+        loop= 'true'
+        >
+    </a-video>
+    </script>            
+</a-nft>
+
+		<a-entity camera></a-entity>
+	</a-scene>
 </body>
 </html>
