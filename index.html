@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <title>Mis niñxs montruxs</title>
   <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 <script>
   function iniciar(){
+    console.log('click')
     document.getElementById('habilitar').className = 'arjs-loader';
-    document.getElementById('botonIniciar').hidden = true;
+    document.getElementById('boton').hidden = true;
     document.getElementById('cargando').hidden = false;
+    document.getElementById('logos').hidden= true;
+    document.getElementById('titulos').hidden= true;
   }
     window.onload = function() {
         AFRAME.registerComponent('videohandler', {
@@ -52,6 +58,7 @@
 </script>
 
 <style>
+
     .arjs-loader {
         height: 100%;
         width: 100%;
@@ -59,7 +66,7 @@
         top: 0;
         left: 0;
         background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
+        z-index: 9998;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -67,24 +74,60 @@
 
     .arjs-loader div {
         text-align: center;
-        font-size: 1.25em;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1 em;
         color: white;
     }
     .habilitar{
-      height: 100%;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-image: url('img/mana-fondo-web.jpg');
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
         position: absolute;
         top: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
+        font-family: 'Roboto', sans-serif;
         font-size: 1.25em;
         color: white;
+        z-index: 9999;
+
     }
+    button{
+      font-family: helvetica;
+      color: whitesmoke;
+      background-color: transparent;
+      border-style: none;
+      font-weight: bold;
+    }
+    .box{
+      width: 90vw;
+      padding-top: 5%;
+    }
+    #fran{
+      width: 90vw;
+      height: auto;
+    }
+    #titulo{
+      width: 90vw;
+      height: auto;
+    }
+    #logo{
+      width: 25vw;
+      height: auto;
+    }
+    .logos{
+      padding-top: 25%;
+    }
+    #botonIniciar{
+      padding-top: 10vh;
+  
+    }
+
 </style>
 
 </head>
@@ -92,8 +135,20 @@
 <body style='margin : 0px; overflow: hidden;'>
   
     <div id= 'habilitar' class="habilitar">
-        <button id= 'botonIniciar'onclick="iniciar()"> Iniciar</button>
-        <div id='cargando' hidden>Cargando</div>
+      <div class="box" id="titulos">
+        <img src="img/francisca-armando.png" id="fran" >
+        <br><br>
+        <img src='img/niñxs-monstruxs.png' id="titulo">
+      </div>
+      <div class="box" id="botonIniciar">
+        <button id='boton'onclick="iniciar()"> Ingresar </button>
+        <div id='cargando' hidden> cargando </div>
+      </div>
+
+        <div class="box" id="logos">
+        <img src="img/logo-chela.png" id="logo" >
+        <img src="img/logo-fadu.png" id="logo">
+        </div>
     </div>
     <a-scene
         vr-mode-ui="enabled: false;"
@@ -110,7 +165,7 @@
             preload="auto" id="nica" response-type="arraybuffer" loop
             crossorigin webkit-playsinline autoplay muted playsinline>
 
-            <video src="assets/pitta-covid.mp4"
+            <video src="assets/mana-mp4.mp4"
             preload="auto" id="mana" response-type="arraybuffer" loop
             crossorigin webkit-playsinline autoplay muted playsinline>
         </video>
