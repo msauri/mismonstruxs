@@ -173,16 +173,16 @@
         <a-assets>
             <video src="/assets/hermanos-uniformes-20.11.mp4" type='video/mp4'
                 preload="auto" id="vid" response-type="arraybuffer" loop
-                crossorigin webkit-playsinline muted playsinline>
+                crossorigin="anonymous" webkit-playsinline muted playsinline>
             </video>
 
             <video src="/assets/niño-nica-20.11.mp4" type='video/mp4'
             preload="auto" id="nica" response-type="arraybuffer" loop
-            crossorigin webkit-playsinline muted playsinline>
+            crossorigin="anonymous" webkit-playsinline muted playsinline>
 
             <video src="/assets/mana-mp4.mp4" type='video/mp4'
             preload="auto" id="mana" response-type="arraybuffer" loop
-            crossorigin webkit-playsinline muted playsinline>
+            crossorigin="anonymous" webkit-playsinline muted playsinline>
         </video>
         </video>
         </a-assets>
@@ -243,6 +243,7 @@
 
 		<a-entity camera onclick="playTest()">
    </a-entity>
+   
 	 <button id="botoncito" onclick="playTest()">AVERGA</button>
   </a-scene>
 </body>
