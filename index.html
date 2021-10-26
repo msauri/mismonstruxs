@@ -45,10 +45,7 @@
               
 
                 marker.addEventListener('markerFound', function () {
-                    this.vid.play();
-			              console.log('play')
-                    this.vid.muted = false
-                    document.getElementById('btnTest').hidden= false;
+                  test();
                 }.bind(this));
 
 		marker.addEventListener('markerLost', function() {
@@ -60,7 +57,9 @@
     };
   function test(){
     this.vid.play();
-    this.vid.muted = false;
+			              console.log('play')
+                    this.vid.muted = false
+                    document.getElementById('btnTest').hidden= false;
   }
 </script>
 
