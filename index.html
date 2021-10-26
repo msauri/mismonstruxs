@@ -56,6 +56,23 @@
         });
     };
   function test(){
+    var marker = this.el;
+    var markerId = marker.id;
+
+                switch (marker.id){
+                  case 'uniformes':
+                    this.vid = document.querySelector("#vid");
+                  break;
+
+                  case 'nica':
+                    this.vid = document.querySelector("#nica");
+                  break;
+
+                  case 'mana':
+                    this.vid = document.querySelector("#mana");
+                    break;
+                }
+    
     this.vid.play();
 			              console.log('play')
                     this.vid.muted = false
