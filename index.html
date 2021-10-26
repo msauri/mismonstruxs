@@ -48,7 +48,7 @@
                     this.vid.play();
 			              console.log('play')
                     this.vid.muted = false
-                    document.getElementById('btnTest').hidden=true;
+                    document.getElementById('btnTest').hidden= false;
                 }.bind(this));
 
 		marker.addEventListener('markerLost', function() {
@@ -173,7 +173,7 @@
         </div>
     </div>
     <div class=btn>
-      <button id="btnTest" hidden= 'false' onclick="test()"> Tocar para reproducir</button>
+      <button id="btnTest" hidden onclick="test()"> Tocar para reproducir</button>
     <a-scene
         vr-mode-ui="enabled: false;"
         renderer='antialias: true; alpha: true; precision: mediump;'
