@@ -13,6 +13,12 @@
 
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 <script>
+  var videotest
+  function playTest(){
+    this.vid.play();
+		console.log('play')
+    this.vid.muted = false
+  }
   function iniciar(){
     console.log('click')
     document.getElementById('habilitar').className = 'arjs-loader';
@@ -144,6 +150,7 @@
       </div>
       <div class="box" id="botonIniciar">
         <button id='boton'onclick="iniciar()"> Ingresar </button>
+        
         <div id='cargando' hidden> cargando </div>
       </div>
 
@@ -151,11 +158,17 @@
         <img src="img/logo-chela.png" id="logo" >
         <img src="img/logo-fadu.png" id="logo">
         </div>
+
+    </div>
+    <div>
+      <button id='prueba' onclick="play()" > avergaston</button>
     </div>
     <a-scene
         vr-mode-ui="enabled: false;"
         renderer='antialias: true; alpha: true; precision: mediump;'
-        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
+        onclick="playTest()">
+        
 
         <a-assets>
             <video src="/assets/hermanos-uniformes-20.11.mp4" type='video/mp4'
@@ -176,7 +189,7 @@
 
         <a-nft
             videohandler id= 'uniformes'
-            type='nft' url='./mismonstruxs/Trackers/hermanosUniformesmol'
+            type='nft' url='Trackers/hermanosUniformesmol'
             smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
         >
            <a-video
@@ -194,7 +207,7 @@
 
         <a-nft
         videohandler id='nica'
-        type='nft' url='./mismonstruxs/Trackers/niño-nicasmol'
+        type='nft' url='Trackers/niño-nicasmol'
         smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
     >
        <a-video
@@ -212,7 +225,7 @@
 
     <a-nft
     videohandler id='mana'
-    type='nft' url='./mismonstruxs/Trackers/nica_16smol'
+    type='nft' url='Trackers/nica_16smol'
     smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
 >
    <a-video
@@ -228,7 +241,9 @@
     </script>            
 </a-nft>
 
-		<a-entity camera></a-entity>
-	</a-scene>
+		<a-entity camera onclick="playTest()">
+   </a-entity>
+	 <button id="botoncito" onclick="playTest()">AVERGA</button>
+  </a-scene>
 </body>
 </html>
